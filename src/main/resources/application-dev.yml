@@ -1,0 +1,39 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /web
+
+spring:
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      # 操作对应的数据库名
+      database: Java
+      username: blue
+      password: blue
+    # 缓存
+    cache:
+      type: ehcache
+      ehcache:
+        config: classpath:ehcache.xml
+  resource:
+    static-locations: classpath:/static/,classpath:/public/
+  web:
+    resources:
+      static-locations: classpath:/templates/
+  # 文件上传的限制
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+project:
+  path:
+    #文件上传根目录 设置
+    upload: D://Temp//upFiles
+    # webapp文件路径
+    webapp: D://Temp//webapp
+  upload:
+    sizeLimit: 209715200 # 后端校验文件大小20M，便于提示错误信息
+    fileType: image/jpeg,image/png,application/pdf

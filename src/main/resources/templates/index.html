@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/theme-chalk/index.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/index.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.19.1/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <el-upload
+                class="upload-demo"
+                multiple
+                action="/web/upload/batch"
+                :on-preview="handlePreview"
+                :on-remove="handleRemove"
+                :on-success="uploadSuccess"
+                :file-list="fileList"
+                >
+            <el-button size="small" type="primary">点击上传</el-button>
+        </el-upload>
+    </div>
+</body>
+
+<script>
+    // 必须实例化vue，不然引入element-ui渲染无效
+    var app = new Vue({
+        el: '#app',
+        data() {
+            return {
+                helloData: {},
+                visible: false,
+                fileList: []
+            }
+        },
+        created() {
+        },
+        methods: {
+            uploadSuccess(response, file, fileList) {
+                console.log(response, file, fileList)
+            },
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+            },
+            handlePreview(file) {
+                console.log(file);
+            },
+        }
+    })
+</script>
+</html>
